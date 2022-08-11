@@ -1,0 +1,11 @@
+.form-options{
+    padding-top: 25px;
+}
+.input-description{
+  
+}
+.buttons-Modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
