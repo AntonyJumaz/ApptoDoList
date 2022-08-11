@@ -14,7 +14,7 @@ export class CreateTaskDTO {
   @IsString()
     readonly title: string;
   @MaxLength(1000)
-  @MinLength(120)
+  @MinLength(100)
   @IsNotEmpty()
   @IsString()
     readonly description: string;
@@ -44,7 +44,7 @@ export class UpdateTaskDto{
   @IsString()
   title:string;
   @MaxLength(1000)
-  @MinLength(120)
+  @MinLength(100)
   @IsNotEmpty()
   @IsString()
   description:string;

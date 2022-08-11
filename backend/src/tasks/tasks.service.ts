@@ -10,6 +10,7 @@ export class TasksService {
     constructor(
         @InjectModel('Task') private TaskModel: Model<TaskDocument>,
       ) {}
+      
       async getAll(): Promise<TaskDocument[]> {
         return await this.TaskModel.find()
       }

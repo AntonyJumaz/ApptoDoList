@@ -7,7 +7,7 @@ export class TaskMongo implements Task {
   _id: Types.ObjectId;
   @Prop({ type: String, required: true, minlength:10, maxlength:120})
   title: string;
-  @Prop({ type: String, required: true, minlength:120, maxlength:1000})
+  @Prop({ type: String, required: true, minlength:100, maxlength:1000})
   description: string;
   @Prop({ type: String, required: true })
   status: string;

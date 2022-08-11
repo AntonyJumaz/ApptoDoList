@@ -18,6 +18,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
+  height:450,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -49,7 +50,7 @@ function ChildModal({title,id}) {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: 350, height:200 }}>
+          <Box sx={{ ...style }}>
             <h2 id="child-modal-title">Confirm to delete {title}</h2>
             <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleConfirm}>Confirm</Button>
@@ -98,7 +99,7 @@ export default function ModalCard({setOpen,_id, title, description, status}) {
           <div className="form-options">
             <form onSubmit={handleSubmit(onSubmit)}>
            <Typography id="transition-modal-title" variant="h6" component="h2">New Title</Typography>
-            <input id="modal-title-task" 
+            <textarea id="modal-title-task" 
               defaultValue={title}
              {...register("title", {
                 required: true,
@@ -110,17 +111,18 @@ export default function ModalCard({setOpen,_id, title, description, status}) {
                   {errors?.title?.type === "maxLength" && (<p>Title name cannot exceed 120 characters</p>)}
                   {errors?.title?.type === "minLength" && (<p>Title name need to be more than 10 characters</p>)}
             <Typography id="transition-modal-description" className='input-description'>New Description</Typography>
-            <input id="modal-title-task" 
+            <textarea id="modal-description-task" 
+                    className='modal-description-task'
                           defaultValue={description}
                          {...register("description", {
                             required: true,
                             maxLength: 1000,
-                            minLength:120,
+                            minLength:100,
                           })}
             />
                             {errors?.description?.type === "required" && <p>This field is required</p>}
-                            {errors?.description?.type === "maxLength" && (<p>Title name cannot exceed 1000 characters</p>)}
-                            {errors?.description?.type === "minLength" && (<p>Title name need to be more than 120 characters</p>)}
+                            {errors?.description?.type === "maxLength" && (<p>description name cannot exceed 1000 characters</p>)}
+                            {errors?.description?.type === "minLength" && (<p>description name need to be more than 100 characters</p>)}
             <div className='form-options'>
             <InputLabel id="demo-simple-select-autowidth-label">Status: </InputLabel>
             {status==="Done"?"Done":<><Select
@@ -141,7 +143,7 @@ export default function ModalCard({setOpen,_id, title, description, status}) {
             </div>
             <div className='buttons-Modal'>
             <Button onClick={cancel}>CANCEL</Button>
-            <input type="submit"/>
+            <input type="submit" lassName="confirm-input" value="Confirm" />
             </div>
             </form>
             </div>

@@ -17,6 +17,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
+    height:450,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -34,7 +35,7 @@ export const MainPage=()=>{
         handleSubmit,
         formState: { errors }
       } = useForm();
-    const [statusForm, setStatusForm] = useState('');
+    const [statusForm, setStatusForm] = useState('pending');
     const [open, setOpen] = useState(false);
     const [lista, setLista]=useState([]);
     const [opened, setOpened] = useState(false);
@@ -48,6 +49,7 @@ export const MainPage=()=>{
 
     const handleClose = () => {
       setOpened(false);
+      
     };
 
     const handleEvent = () => {
@@ -79,12 +81,12 @@ export const MainPage=()=>{
           onClose={handleClose}
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description">
-          <Box sx={{ ...style, width: 350, height:350 }}>
+          <Box sx={{ ...style }}>
             <h2 id="child-modal-title">Create new Task</h2>
             <div className="form-options">
             <form onSubmit={handleSubmit(onSubmit)}>
            <Typography id="transition-modal-title" variant="h6" component="h2">New Title</Typography>
-            <input id="modal-title-task" 
+            <textarea id="modal-title-task" 
              {...register("title", {
                 required: true,
                 maxLength: 120,
@@ -95,23 +97,24 @@ export const MainPage=()=>{
                   {errors?.title?.type === "maxLength" && (<p>Title name cannot exceed 120 characters</p>)}
                   {errors?.title?.type === "minLength" && (<p>Title name need to be more than 10 characters</p>)}
             <Typography id="transition-modal-description" className='input-description'>New Description</Typography>
-            <input id="modal-title-task" 
+            <textarea id="modal-description-task" 
+                        className='modal-description-task'
                          {...register("description", {
                             required: true,
                             maxLength: 1000,
-                            minLength:120,
+                            minLength:100,
                           })}
             />
                             {errors?.description?.type === "required" && <p>This field is required</p>}
-                            {errors?.description?.type === "maxLength" && (<p>Title name cannot exceed 1000 characters</p>)}
-                            {errors?.description?.type === "minLength" && (<p>Title name need to be more than 120 characters</p>)}
+                            {errors?.description?.type === "maxLength" && (<p>description name cannot exceed 1000 characters</p>)}
+                            {errors?.description?.type === "minLength" && (<p>description name need to be more than 100 characters</p>)}
             <div className='form-options'>
             <InputLabel id="demo-simple-select-autowidth-label">Status: </InputLabel>
             <Select
             {...register("status",{required:true})} 
               labelId="demo-simple-select-autowidth-label"
               id="demo-simple-select-autowidth"
-              value={statusForm}
+              defaultValue={statusForm}
               onChange={handleChange}
                autoWidth
                label="Age"
@@ -125,7 +128,7 @@ export const MainPage=()=>{
             </div>
             <div className='buttons-Modal'>
             <Button onClick={handleClose}>CANCEL</Button>
-            <input type="submit"/>
+            <input type="submit" className="confirm-input" value="Confirm"/>
             </div>
             </form>
             </div>

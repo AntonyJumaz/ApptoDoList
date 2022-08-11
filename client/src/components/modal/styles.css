@@ -1,11 +1,18 @@
 .form-options{
     padding-top: 25px;
 }
-.input-description{
-  
+.modal-description-task{
+    height:100px;
+    width:300px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 82%;
+    overflow:scroll;
 }
 .buttons-Modal{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.confirm-input{
+    background-color: transparent;
 }

@@ -13,7 +13,7 @@ export const CardTask = ({_id,title,description,status,onPress})=>{
             <div className = "card-wrapper">
                     <div className= "card-status">{status}</div>
                     <div className= "card-title">{title}</div>
-                    <div className= "card-description">{description.length > limit?description.substring(0,limit) +"...":"nono"}</div>
+                    <div className= "card-description">{description.length > limit?description.substring(0,limit) +"...":<>{description}</>}</div>
             </div>
         </div>
         <div>

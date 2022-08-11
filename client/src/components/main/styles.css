@@ -5,16 +5,23 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-  
+    
 }
 .form-options{
     padding-top: 25px;
 }
-.input-description{
-  
+.confirm-input{
+    background-color: transparent;
 }
 .buttons-Modal{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.modal-description-task{
+    height:100px;
+    width:350px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 82%;
+    overflow:scroll;
 }
