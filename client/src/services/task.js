@@ -74,6 +74,7 @@ export const createTask = async (data) => {
     });
     if (response.status !== 200) return "";
     const task= await response.json();
+    window.location.reload(false);
     return task;
     } catch (err) {
     throw err;
