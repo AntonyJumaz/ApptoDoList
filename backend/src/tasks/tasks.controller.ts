@@ -8,8 +8,8 @@ export class TasksController {
   constructor(private readonly taskService: TasksService) {}
 
   @Get('/get')
-  async getAll(@Body() getTasksDTO: GetTasksDTO): Promise<TaskDocument[]> {
-    return await this.taskService.getAll(getTasksDTO);
+  async getAll(): Promise<TaskDocument[]> {
+    return await this.taskService.getAll();
   }
   @Post('/create')
   async create(@Res() res, @Body() createTaskDTO: CreateTaskDTO): Promise<TaskDocument> {

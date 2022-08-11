@@ -37,7 +37,6 @@ export interface GetTasksDTO {
   limit?: number;
   offset?: number;
 }
-
 export class UpdateTaskDto{
   @MaxLength(120)
   @MinLength(10)

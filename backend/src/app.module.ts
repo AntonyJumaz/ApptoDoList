@@ -7,6 +7,7 @@ import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
+    TasksModule,
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 10,
@@ -14,7 +15,6 @@ import { TasksModule } from './tasks/tasks.module';
     MongooseModule.forRoot(
       `mongodb+srv://antony_juarez:HYGp1VvqOzr7x34p@cluster1.3sqgfon.mongodb.net/?retryWrites=true&w=majority`
       ),
-    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],

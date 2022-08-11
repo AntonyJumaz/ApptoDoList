@@ -8,46 +8,33 @@ import { Task } from './interface/task.interface';
 @Injectable()
 export class TasksService {
     constructor(
-        @InjectModel('Task') private taskModel: Model<TaskDocument>,
+        @InjectModel('Task') private TaskModel: Model<TaskDocument>,
       ) {}
-      async getAll(queryOptions: GetTasksDTO): Promise<TaskDocument[]> {
-        return await this.taskModel
-          .find()
-          .limit(
-            queryOptions.limit && queryOptions.limit > 0 && queryOptions.limit <= 10
-              ? Math.round(queryOptions.limit)
-              : 10
-          )
-          .skip(
-            queryOptions.offset &&
-              queryOptions.offset > 0 &&
-              queryOptions.offset <= 10
-              ? Math.round(queryOptions.offset)
-              : 0
-          );
+      async getAll(): Promise<TaskDocument[]> {
+        return await this.TaskModel.find()
       }
       async getbyStatus(queryOptions: GetTasksDTO,status:string, pageSize:number, page:number): Promise<TaskDocument[]> {
         const take= pageSize || 3
         const pages=page || 1;
         const skip= (pages-1) * take ;
-        return await this.taskModel
+        return await this.TaskModel
         .find({status}).limit(pageSize).skip(skip)
       }
 
       async create(task: CreateTaskDTO): Promise<TaskDocument> {
-        const createdTask = await this.taskModel.create({
+        const createdTask = await this.TaskModel.create({
           ...task,
         });
         return createdTask;
       }
 
       async delete(productID: Types.ObjectId): Promise<any> {
-        const deletedTask = await this.taskModel.findByIdAndDelete(productID);
+        const deletedTask = await this.TaskModel.findByIdAndDelete(productID);
         return deletedTask;
       }
 
       async update(id: string, createTaskDTO:CreateTaskDTO): Promise<TaskDocument>{
-        const updatedTask= await this.taskModel.findByIdAndUpdate(id,createTaskDTO, {new:true});
+        const updatedTask= await this.TaskModel.findByIdAndUpdate(id,createTaskDTO, {new:true});
         return updatedTask;
       }
       
